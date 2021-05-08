@@ -5,6 +5,20 @@ import logo from './logo.svg';
 
 const Navbar = () => {
    const [showLinks, setShowLinks] = useState(false);
+   const linksContainerRef = useRef(null); //for containing div
+   const linksRef = useRef(null); //for unordered list
+
+   useEffect(() => {
+      //check the height for the links(small screens) so as to use it to adjust the height of the links container
+      const linksHeight = linksRef.current.getBoundingClientRect().height;
+      //console.log(linksHeight)
+
+      if (showLinks) {
+         linksContainerRef.current.style.height = `${linksHeight}px`;
+      } else {
+         linksContainerRef.current.style.height = '0px';
+      }
+   }, [showLinks]);
 
    return (
       <nav>
@@ -18,20 +32,19 @@ const Navbar = () => {
                   <FaBars />
                </button>
             </div>
-            {showLinks && (
-               <div className='links-container show-container'>
-                  <ul className='links'>
-                     {links.map((link) => {
-                        const { id, url, text } = link;
-                        return (
-                           <li key={id}>
-                              <a href={url}>{text}</a>
-                           </li>
-                        );
-                     })}
-                  </ul>
-               </div>
-            )}
+
+            <div className='links-container' ref={linksContainerRef}>
+               <ul className='links' ref={linksRef}>
+                  {links.map((link) => {
+                     const { id, url, text } = link;
+                     return (
+                        <li key={id}>
+                           <a href={url}>{text}</a>
+                        </li>
+                     );
+                  })}
+               </ul>
+            </div>
 
             <ul className='social-icons'>
                {social.map((socialIcon) => {
