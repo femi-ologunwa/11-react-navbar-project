@@ -1,14 +1,11 @@
-#### Homepage
+#### React Responsive Navbar
 
-[view](https://femi-ologunwa.github.io/11-react-navbar-project)
+[view page ](https://femi-ologunwa.github.io/11-react-navbar-project)
 
-![](./homescreen.png)
-
-[mobile view](https://femi-ologunwa.github.io/11-react-navbar-project)
-
-![](./homescreen2.png)
+![](./homescreen.gif)
 
 ### Implementation
 
--  Illustrating use of useRef hook
--  Adjusting the height of mobile links container based on the number of links
+-  Illustrating use of `useRef` hook to select an element
+-  Modifyng the propeties of an element selected with the `useRef` hook
+-  Implement how to dynamically change the height of a component on the screen by using `useEffect`, `useRef` and `getBoundingClientRect()`;
